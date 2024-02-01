@@ -1,0 +1,11 @@
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+</script>
+
+<template>
+  <RouterView />
+</template>
+
+<style lang="scss">
+@import './assets/styles/index.scss';
+</style>
