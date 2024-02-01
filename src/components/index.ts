@@ -1,3 +1,6 @@
 export { default as FormStep } from './FormStep.vue'
+export { default as FormStepsSummary } from './FormStepsSummary.vue'
 export { default as PersonalInfoStep } from './PersonalInfoStep.vue'
+export { default as SelectPlanStep } from './SelectPlanStep.vue'
+export { default as SingleButton } from './SingleButton.vue'
 export { default as TextField } from './TextField.vue'

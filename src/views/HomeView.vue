@@ -1,35 +1,45 @@
 <script setup lang="ts">
-import PersonalInfoStep from '@/components/PersonalInfoStep.vue'
+import { storeToRefs } from 'pinia'
 
-const FORM_STEPS = [
-  { order: 1, name: 'info', title: 'Your Info' },
-  { order: 2, name: 'plan', title: 'Select Plan' },
-  { order: 3, name: 'add-ons', title: 'Add-Ons' },
-  { order: 4, name: 'summary', title: 'Summary' }
-]
+import { FormStepsSummary, PersonalInfoStep, SelectPlanStep } from '@/components'
+import { useMultiStepFormDataStore } from '@/stores'
+
+const store = useMultiStepFormDataStore()
+const { currentStep } = storeToRefs(store)
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <aside>
-        <ul>
-          <li v-for="step in FORM_STEPS" :key="step.order">
-            <div>{{ step.order }}</div>
-            <div>
-              <span>Step {{ step.order }}</span>
-              <h3>{{ step.title }}</h3>
-            </div>
-          </li>
-        </ul>
-      </aside>
-      <section>
-        <PersonalInfoStep />
-        <footer>
-          <button>Go Back</button>
-          <button>Next Step</button>
-        </footer>
+  <main class="wrapper">
+    <div class="container flex justify-center w-full">
+      <section class="content p-4 w-full">
+        <FormStepsSummary :current-step="1" />
+        <section>
+          <PersonalInfoStep :active="currentStep === 1" />
+          <SelectPlanStep :active="currentStep === 2" />
+        </section>
       </section>
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped>
+@import '../assets/styles/index.scss';
+
+.wrapper {
+  background: $magnolia;
+  min-height: 100vh;
+  padding-top: 96px;
+}
+
+.content {
+  max-width: 940px;
+  height: 600px;
+  background: $white;
+  border-radius: 10px;
+  box-shadow: 0 25px 40px -20px #00000022;
+
+  display: grid;
+  grid-template-columns: 3.7fr 8.3fr;
+  gap: 16px;
+}
+</style>

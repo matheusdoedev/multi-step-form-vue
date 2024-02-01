@@ -1,16 +1,74 @@
 <script setup lang="ts">
-import { FormStep, TextField } from '.'
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+
+import { useMultiStepFormDataStore } from '@/stores'
+
+import { FormStep, SingleButton, TextField } from '.'
+
+type PersonalInfoStepProps = {
+  active?: boolean
+}
+
+// @ts-ignore
+const store = useMultiStepFormDataStore()
+const { formData } = storeToRefs(store)
+const { changeFormData, changeFormStep } = store
+const { active } = defineProps<PersonalInfoStepProps>()
+
+function handleSubmit(event) {
+  event.preventDefault()
+
+  changeFormStep(2)
+}
+
+onMounted(() => {
+  const nameInput = document.querySelector("[name='name']") as HTMLInputElement
+
+  nameInput.focus()
+})
 </script>
 
 <template>
   <FormStep
     title="Personal Info"
     description="Please provide your name, email address, and phone number."
+    :active="active"
   >
-    <form>
-      <TextField name="name" label="Name" />
-      <TextField type="email" name="email" label="Email Address" />
-      <TextField name="phone" label="Phone Number" placeholder="e.g. +1 234 567 890" />
+    <form @submit="handleSubmit">
+      <TextField
+        name="name"
+        label="Name"
+        placeholder="e.g. John Doe"
+        :value="formData.name"
+        :on-change="changeFormData('name')"
+      />
+      <TextField
+        type="email"
+        name="email"
+        label="Email Address"
+        placeholder="e.g. johndoe@mail.com"
+        :value="formData.email"
+        :on-change="changeFormData('email')"
+      />
+      <TextField
+        name="phone"
+        label="Phone Number"
+        placeholder="e.g. +1 234 567 890"
+        :value="formData.phone"
+        :on-change="changeFormData('phone')"
+      />
+      <footer class="footer flex justify-end">
+        <SingleButton type="submit">Next Step</SingleButton>
+      </footer>
     </form>
   </FormStep>
 </template>
+
+<style lang="scss" scoped>
+@import '../assets/styles/index.scss';
+
+.footer {
+  margin-top: 92px;
+}
+</style>
