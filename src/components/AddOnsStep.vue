@@ -43,22 +43,30 @@ function handleChangeAddOns(value: string) {
           :class="{ selected: formData.addOns.includes(addOn.value) }"
           @click="() => handleChangeAddOns(addOn.value)"
         >
-          <div class="flex items-center gap-6">
+          <div class="flex items-center gap-3 lg:gap-6">
             <div
               class="add-on-option__checkbox rounded flex items-center justify-center"
               :class="{ selected: formData.addOns.includes(addOn.value) }"
             >
               <img src="../assets/images/icon-checkmark.svg" alt="Checkmark" />
             </div>
-            <div class="flex flex-col gap-2 text-left">
-              <h3 class="add-on-option__title font-medium text-base">{{ addOn.label }}</h3>
-              <span class="add-on-option__description text-sm">{{ addOn.description }}</span>
+            <div class="flex flex-col gap-1 lg:gap-2 text-left">
+              <h3 class="add-on-option__title font-medium text-sm lg:text-base">
+                {{ addOn.label }}
+              </h3>
+              <span class="add-on-option__description text-xs lg:text-sm">{{
+                addOn.description
+              }}</span>
             </div>
           </div>
-          <span v-if="formData.planType === 'montly'" class="add-on-option__price text-sm"
+          <span
+            v-if="formData.planType === 'montly'"
+            class="add-on-option__price text-xs lg:text-sm"
             >${{ addOn.monthlyPrice }}/mo</span
           >
-          <span v-if="formData.planType === 'yearly'" class="add-on-option__price"
+          <span
+            v-if="formData.planType === 'yearly'"
+            class="add-on-option__price text-xs lg:text-sm"
             >${{ addOn.yearlyPrice }}/yr</span
           >
         </button>

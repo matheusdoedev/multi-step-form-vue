@@ -12,8 +12,8 @@ const { currentStep } = storeToRefs(store)
     v-if="currentStep === 5"
     class="conclude flex flex-col items-center justify-center text-center w-full"
   >
-    <img class="mb-8" src="../assets/images/icon-thank-you.svg" alt="Thank you" />
-    <h2 class="title font-bold mb-3.5">Thank you!</h2>
+    <img class="mb-6 lg:mb-8" src="../assets/images/icon-thank-you.svg" alt="Thank you" />
+    <h2 class="title font-bold mb-2.5 lg:mb-3.5">Thank you!</h2>
     <p class="text text-base">
       Thanks for confirming your subscription! We hope you have fun using our platform. If you ever
       need support, please feel free to email us at support@loremgaming.com.
@@ -35,5 +35,11 @@ const { currentStep } = storeToRefs(store)
 
 .text {
   color: $cool-gray;
+}
+
+@media (max-width: $lg) {
+  .title {
+    font-size: 24px;
+  }
 }
 </style>

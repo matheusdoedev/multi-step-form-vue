@@ -69,16 +69,22 @@ function handleGoToSelectPlan() {
     :hide-footer="true"
   >
     <section class="flex flex-col gap-6">
-      <section class="summary-data w-full flex flex-col rounded-lg py-4 px-6">
+      <section class="summary-data w-full flex flex-col rounded-lg p-4 lg:py-4 lg:px-6">
         <div class="w-full flex items-center justify-between">
-          <div class="flex flex-col text-left gap-2">
-            <h3 class="plan-label font-medium text-case">{{ planData.selectedPlanText }}</h3>
-            <button class="change-button text-sm underline text-left" @click="handleGoToSelectPlan">Change</button>
+          <div class="flex flex-col text-left gap-1 lg:gap-2">
+            <h3 class="plan-label font-medium text-sm lg:text-base">
+              {{ planData.selectedPlanText }}
+            </h3>
+            <button class="change-button text-sm underline text-left" @click="handleGoToSelectPlan">
+              Change
+            </button>
           </div>
-          <span class="plan-price text-base font-bold">{{ planData.planPriceText }}</span>
+          <span class="plan-price text-sm lg:text-base font-bold">{{
+            planData.planPriceText
+          }}</span>
         </div>
-        <div class="separator w-full mt-6 mb-4" />
-        <ul class="w-full flex flex-col gap-4">
+        <div class="separator w-full my-3 lg:mt-6 lg:mb-4" />
+        <ul class="w-full flex flex-col gap-3 lg:gap-4">
           <li
             v-for="addOn in selectedAddOns"
             class="flex items-center justify-between w-full"
@@ -91,7 +97,7 @@ function handleGoToSelectPlan() {
       </section>
       <section class="summary__total flex items-center justify-between px-6">
         <span class="total-label text-sm">{{ totalData.label }}</span>
-        <span class="total-price font-bold text-xl">{{ totalData.priceText }}</span>
+        <span class="total-price font-bold text-base lg:text-xl">{{ totalData.priceText }}</span>
       </section>
     </section>
     <footer class="footer flex justify-between w-full">
@@ -150,5 +156,17 @@ function handleGoToSelectPlan() {
 .footer {
   position: absolute;
   bottom: 0;
+}
+
+@media (max-width: $lg) {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background: $white;
+    padding: 16px;
+    box-shadow: 0 25px 40px -20px #00000011;
+  }
 }
 </style>

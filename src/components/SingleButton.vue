@@ -12,7 +12,7 @@ const { onClick, type = 'button', disabled = false, style = '' } = defineProps<S
 <template>
   <button
     :type="type"
-    class="button-wrapper px-6 py-3 rounded-lg font-medium text-base"
+    class="button-wrapper px-6 py-3 rounded-lg font-medium text-sm lg:text-base"
     :disabled="disabled"
     @click="onClick"
     :style="style"
