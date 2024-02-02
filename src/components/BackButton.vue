@@ -13,7 +13,7 @@ function handleBack() {
 </script>
 
 <template>
-  <button type="button" class="back-button text-base font-medium" @click="handleBack">
+  <button type="button" class="back-button text-sm lg:text-base font-medium" @click="handleBack">
     Go Back
   </button>
 </template>

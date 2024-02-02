@@ -11,10 +11,11 @@ import {
 
 <template>
   <main class="wrapper">
+    <FormStepsSummary :is-mobile="true" />
     <div class="container flex justify-center w-full">
-      <section class="content p-4 w-full">
+      <section class="content py-8 px-6 lg:p-4 w-full">
         <FormStepsSummary />
-        <section class="steps">
+        <section class="steps w-full">
           <PersonalInfoStep />
           <SelectPlanStep />
           <AddOnStep />
@@ -50,5 +51,25 @@ import {
 
 .steps {
   height: 100%;
+}
+
+@media (max-width: $lg) {
+  .wrapper {
+    padding-bottom: 128px;
+  }
+
+  .content {
+    z-index: 2;
+    margin-top: 11px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .steps {
+    max-width: 360px;
+  }
 }
 </style>
