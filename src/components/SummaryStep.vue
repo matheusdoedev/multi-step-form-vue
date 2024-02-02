@@ -55,6 +55,10 @@ const totalData = computed(() => {
 function handleConclude() {
   changeFormStep(currentStep.value + 1)
 }
+
+function handleGoToSelectPlan() {
+  changeFormStep(2)
+}
 </script>
 
 <template>
@@ -69,7 +73,7 @@ function handleConclude() {
         <div class="w-full flex items-center justify-between">
           <div class="flex flex-col text-left gap-2">
             <h3 class="plan-label font-medium text-case">{{ planData.selectedPlanText }}</h3>
-            <button class="change-button text-sm underline text-left">Change</button>
+            <button class="change-button text-sm underline text-left" @click="handleGoToSelectPlan">Change</button>
           </div>
           <span class="plan-price text-base font-bold">{{ planData.planPriceText }}</span>
         </div>
