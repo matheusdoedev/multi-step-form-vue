@@ -30,3 +30,4 @@ coverage
 *.tsbuildinfo
 
 challenge
+yarn.lock
