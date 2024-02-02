@@ -5,9 +5,10 @@ import SingleButton from './SingleButton.vue'
 type StepProps = {
   title: string
   description: string
-  onNext: () => void
+  onNext?: () => void
   isNextButtonDisabled?: boolean
   active?: boolean
+  hideFooter?: boolean
 }
 
 const {
@@ -15,7 +16,8 @@ const {
   description,
   active = false,
   onNext,
-  isNextButtonDisabled = false
+  isNextButtonDisabled = false,
+  hideFooter = false
 } = defineProps<StepProps>()
 </script>
 
@@ -24,9 +26,9 @@ const {
     <h3 class="title font-bold pb-3">{{ title }}</h3>
     <p class="description pb-8 text-base">{{ description }}</p>
     <slot></slot>
-    <footer class="footer flex justify-between w-full">
+    <footer v-if="!hideFooter" class="footer flex justify-between w-full">
       <BackButton />
-      <SingleButton type="button" @click="onNext" :disabled="isNextButtonDisabled"
+      <SingleButton type="button" :on-click="onNext" :disabled="isNextButtonDisabled"
         >Next Step</SingleButton
       >
     </footer>

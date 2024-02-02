@@ -17,7 +17,6 @@ const isButtonDisabled = computed(() => {
 
 function handleNextStep() {
   changeFormStep(currentStep.value + 1)
-  console.log(currentStep.value)
 }
 
 function handleChangeAddOns(value: string) {

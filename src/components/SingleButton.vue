@@ -1,11 +1,12 @@
 <script setup lang="ts">
 type SingleButtonProps = {
-  onClick: () => void
+  onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
+  style?: string
 }
 
-const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonProps>()
+const { onClick, type = 'button', disabled = false, style = '' } = defineProps<SingleButtonProps>()
 </script>
 
 <template>
@@ -14,6 +15,7 @@ const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonP
     class="button-wrapper px-6 py-3 rounded-lg font-medium text-base"
     :disabled="disabled"
     @click="onClick"
+    :style="style"
   >
     <slot></slot>
   </button>
@@ -28,8 +30,8 @@ const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonP
   transition: 0.3s;
 
   &:hover {
-    background: #164a8a;
-    transition: 0.3s;
+    background: #164a8a !important;
+    transition: 0.3s !important;
   }
 
   &:disabled {

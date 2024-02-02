@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { AddOnStep, FormStepsSummary, PersonalInfoStep, SelectPlanStep } from '@/components'
+import {
+  AddOnStep,
+  FormStepsSummary,
+  PersonalInfoStep,
+  SelectPlanStep,
+  SummaryStep
+} from '@/components'
 </script>
 
 <template>
@@ -11,6 +17,7 @@ import { AddOnStep, FormStepsSummary, PersonalInfoStep, SelectPlanStep } from '@
           <PersonalInfoStep />
           <SelectPlanStep />
           <AddOnStep />
+          <SummaryStep />
         </section>
       </section>
     </div>
