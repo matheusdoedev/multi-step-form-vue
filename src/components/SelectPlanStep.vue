@@ -8,14 +8,9 @@ import FormStep from './FormStep.vue'
 import { useMultiStepFormDataStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 
-type SelectPlanStepProps = {
-  active?: boolean
-}
-
 const store = useMultiStepFormDataStore()
 const { currentStep, formData } = storeToRefs(store)
-const { changeFormStep, changeFormData } = store
-const { active } = defineProps<SelectPlanStepProps>()
+const { changeFormStep } = store
 const planOptions = computed(() => PLANS_OPTIONS)
 const isMonthly = computed(() => {
   return formData.value.planType === 'montly'
@@ -42,7 +37,7 @@ function handleNextStep() {
   <FormStep
     title="Select your plan"
     description="You have the option of monthly or yearly billing."
-    :active="active"
+    :active="currentStep === 2"
     :on-next="handleNextStep"
   >
     <ul class="flex items-center gap-4 w-full mb-8">

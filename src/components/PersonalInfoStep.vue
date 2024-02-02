@@ -7,15 +7,10 @@ import { useMultiStepFormDataStore } from '@/stores'
 import TextField from './TextField.vue'
 import FormStep from './FormStep.vue'
 
-type PersonalInfoStepProps = {
-  active?: boolean
-}
-
 // @ts-ignore
 const store = useMultiStepFormDataStore()
-const { formData } = storeToRefs(store)
+const { formData, currentStep } = storeToRefs(store)
 const { changeFormData, changeFormStep } = store
-const { active } = defineProps<PersonalInfoStepProps>()
 
 function handleSubmit() {
   changeFormStep(2)
@@ -32,7 +27,7 @@ onMounted(() => {
   <FormStep
     title="Personal Info"
     description="Please provide your name, email address, and phone number."
-    :active="active"
+    :active="currentStep === 1"
     :on-next="() => handleSubmit()"
   >
     <form>

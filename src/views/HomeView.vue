@@ -1,21 +1,16 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-
-import { FormStepsSummary, PersonalInfoStep, SelectPlanStep } from '@/components'
-import { useMultiStepFormDataStore } from '@/stores'
-
-const store = useMultiStepFormDataStore()
-const { currentStep } = storeToRefs(store)
+import { AddOnStep, FormStepsSummary, PersonalInfoStep, SelectPlanStep } from '@/components'
 </script>
 
 <template>
   <main class="wrapper">
     <div class="container flex justify-center w-full">
       <section class="content p-4 w-full">
-        <FormStepsSummary :current-step="currentStep" />
+        <FormStepsSummary />
         <section class="steps">
-          <PersonalInfoStep :active="currentStep === 1" />
-          <SelectPlanStep :active="currentStep === 2" />
+          <PersonalInfoStep />
+          <SelectPlanStep />
+          <AddOnStep />
         </section>
       </section>
     </div>

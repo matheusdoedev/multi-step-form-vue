@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import { useMultiStepFormDataStore } from '@/stores'
+import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
-
-type FormStepsSummaryProps = {
-  currentStep: number
-}
 
 const formSteps = computed(() => [
   { order: 1, name: 'info', title: 'Your Info' },
@@ -11,8 +9,8 @@ const formSteps = computed(() => [
   { order: 3, name: 'add-ons', title: 'Add-Ons' },
   { order: 4, name: 'summary', title: 'Summary' }
 ])
-
-const { currentStep } = defineProps<FormStepsSummaryProps>()
+const store = useMultiStepFormDataStore()
+const { currentStep } = storeToRefs(store)
 </script>
 
 <template>

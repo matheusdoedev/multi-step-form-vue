@@ -13,7 +13,9 @@ function handleBack() {
 </script>
 
 <template>
-  <button class="back-button text-base font-medium" @click="handleBack">Go Back</button>
+  <button type="button" class="back-button text-base font-medium" @click="handleBack">
+    Go Back
+  </button>
 </template>
 
 <style lang="scss" scoped>

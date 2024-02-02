@@ -1,24 +1,19 @@
 <script setup lang="ts">
 type SingleButtonProps = {
-  onClick?: () => void
+  onClick: () => void
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
 }
 
 const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonProps>()
-
-function handleClick() {
-  if (disabled) return
-  onClick && onClick()
-}
 </script>
 
 <template>
   <button
     :type="type"
     class="button-wrapper px-6 py-3 rounded-lg font-medium text-base"
-    :class="{ disabled }"
-    @click="handleClick"
+    :disabled="disabled"
+    @click="onClick"
   >
     <slot></slot>
   </button>
@@ -37,9 +32,9 @@ function handleClick() {
     transition: 0.3s;
   }
 
-  &.disabled {
-    background: $light-gray;
-    color: $cool-gray;
+  &:disabled {
+    background: $light-gray !important;
+    color: $cool-gray !important;
   }
 }
 </style>
