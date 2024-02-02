@@ -1,68 +1,106 @@
-# multi-step-form-vue
+# Multi Step Form Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+- A multi step form made in Vue with Pinia, SCSS, and Tailwindcss.
 
-## Recommended IDE Setup
+- This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Overview
 
-## Type Support for `.vue` Imports in TS
+### The challenge
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Users should be able to:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- Complete each step of the sequence
+- Go back to a previous step to update their selections
+- See a summary of their selections on the final step and confirm their order
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- Receive form validation messages if:
+  - A field has been missed
+  - The email address is not formatted correctly
+  - A step is submitted, but no selection has been made
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Installation
 
-## Customize configuration
+### 0. Clone the project
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```sh
+git clone git@github.com:matheusdoedev/multi-step-form-vue.git
+```
 
-## Project Setup
+## Running project in development mode
+
+### 0. Install dependencies
 
 ```sh
 npm install
+
+# or
+
+yarn
 ```
 
-### Compile and Hot-Reload for Development
+### 1. Run project
 
 ```sh
 npm run dev
+
+yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Running project in production mode with Docker & Docker Compose
+
+### 0. Build image
+
+```sh
+docker build -t multi-step-form-vue .
+```
+
+### 1. Run container
+
+```sh
+docker run -d -p 4173:4173 --name multi-step-form-vue multi-step-form-vue
+```
+
+## Running project in production mode without Docker
+
+### 0. Install dependencies
+
+```sh
+npm install
+
+# or
+
+yarn
+```
+
+### 1. Build project
 
 ```sh
 npm run build
+
+yarn build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### 2. Run project
 
 ```sh
-npm run test:unit
+npm preview
+
+yarn preview
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Technologies
 
-```sh
-npm run test:e2e:dev
-```
+- [Vue](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [TailwindCSS](https://tailwindcss.com/docs)
+- [SCSS](https://sass-lang.com/)
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Contributing
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1. Fork it (<git@github.com:matheusdoedev/multi-step-form-vue.git>)
+2. Create your feature branch (`git checkout -b feat/fooBar`)
+3. Commit your changes following conventional commits pattern (`git commit -am 'feat: add some feature'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
