@@ -12,8 +12,8 @@ const { currentStep } = storeToRefs(store)
   <main class="wrapper">
     <div class="container flex justify-center w-full">
       <section class="content p-4 w-full">
-        <FormStepsSummary :current-step="1" />
-        <section>
+        <FormStepsSummary :current-step="currentStep" />
+        <section class="steps">
           <PersonalInfoStep :active="currentStep === 1" />
           <SelectPlanStep :active="currentStep === 2" />
         </section>
@@ -40,6 +40,11 @@ const { currentStep } = storeToRefs(store)
 
   display: grid;
   grid-template-columns: 3.7fr 8.3fr;
+  align-items: start;
   gap: 16px;
+}
+
+.steps {
+  height: 100%;
 }
 </style>

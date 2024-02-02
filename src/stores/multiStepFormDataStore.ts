@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import type { FormDataDto, PlanType } from '@/interfaces'
+import type { FormDataDto, Plan, PlanType } from '@/interfaces'
 
 export const useMultiStepFormDataStore = defineStore('multiStepFormData', () => {
   const currentStep = ref(1)
@@ -10,13 +10,13 @@ export const useMultiStepFormDataStore = defineStore('multiStepFormData', () => 
     name: '',
     email: '',
     phone: '',
-    plan: '',
-    planType: 'yearly',
+    plan: 'arcade',
+    planType: 'montly',
     addOns: []
   })
 
-  const changeFormData = (key: keyof FormDataDto) => (value: string & PlanType & string[]) => {
-    formData.value[key] = value
+  const changeFormData = (key: keyof FormDataDto) => (value: unknown) => {
+    formData.value[key] = value as string & PlanType & Plan & string[]
   }
 
   function changeFormStep(newStep: number) {

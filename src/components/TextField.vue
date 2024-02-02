@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InputTypeHTMLAttribute } from 'vue'
+import type { InputTypeHTMLAttribute } from 'vue'
 
 type InputProps = {
   name: string

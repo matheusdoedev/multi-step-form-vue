@@ -6,14 +6,19 @@ type SingleButtonProps = {
 }
 
 const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonProps>()
+
+function handleClick() {
+  if (disabled) return
+  onClick && onClick()
+}
 </script>
 
 <template>
   <button
     :type="type"
-    class="button px-6 py-3 rounded-lg font-medium text-base"
-    @click="onClick"
-    :disabled="disabled"
+    class="button-wrapper px-6 py-3 rounded-lg font-medium text-base"
+    :class="{ disabled }"
+    @click="handleClick"
   >
     <slot></slot>
   </button>
@@ -22,9 +27,9 @@ const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonP
 <style lang="scss" scoped>
 @import '../assets/styles/index.scss';
 
-.button {
-  background: $marine-blue;
-  color: $white;
+.button-wrapper {
+  background: $marine-blue !important;
+  color: $white !important;
   transition: 0.3s;
 
   &:hover {
@@ -32,7 +37,7 @@ const { onClick, type = 'button', disabled = false } = defineProps<SingleButtonP
     transition: 0.3s;
   }
 
-  &:disabled {
+  &.disabled {
     background: $light-gray;
     color: $cool-gray;
   }

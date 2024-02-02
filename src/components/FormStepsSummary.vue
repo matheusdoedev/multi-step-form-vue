@@ -41,6 +41,7 @@ const { currentStep } = defineProps<FormStepsSummaryProps>()
   background: url('../assets/images/bg-sidebar-desktop.svg') no-repeat;
   background-position: center bottom;
   border-radius: 10px;
+  height: 100%;
 }
 
 .step-number {

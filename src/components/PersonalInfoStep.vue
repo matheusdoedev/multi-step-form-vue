@@ -4,7 +4,8 @@ import { storeToRefs } from 'pinia'
 
 import { useMultiStepFormDataStore } from '@/stores'
 
-import { FormStep, SingleButton, TextField } from '.'
+import TextField from './TextField.vue'
+import FormStep from './FormStep.vue'
 
 type PersonalInfoStepProps = {
   active?: boolean
@@ -16,9 +17,7 @@ const { formData } = storeToRefs(store)
 const { changeFormData, changeFormStep } = store
 const { active } = defineProps<PersonalInfoStepProps>()
 
-function handleSubmit(event) {
-  event.preventDefault()
-
+function handleSubmit() {
   changeFormStep(2)
 }
 
@@ -34,8 +33,9 @@ onMounted(() => {
     title="Personal Info"
     description="Please provide your name, email address, and phone number."
     :active="active"
+    :on-next="() => handleSubmit()"
   >
-    <form @submit="handleSubmit">
+    <form>
       <TextField
         name="name"
         label="Name"
@@ -58,9 +58,6 @@ onMounted(() => {
         :value="formData.phone"
         :on-change="changeFormData('phone')"
       />
-      <footer class="footer flex justify-end">
-        <SingleButton type="submit">Next Step</SingleButton>
-      </footer>
     </form>
   </FormStep>
 </template>
