@@ -9,6 +9,7 @@ type StepProps = {
   isNextButtonDisabled?: boolean
   active?: boolean
   hideFooter?: boolean
+  hideBackButton?: boolean
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   active = false,
   onNext,
   isNextButtonDisabled = false,
-  hideFooter = false
+  hideFooter = false,
+  hideBackButton = false
 } = defineProps<StepProps>()
 </script>
 
@@ -27,7 +29,8 @@ const {
     <p class="description pb-8 text-base">{{ description }}</p>
     <slot></slot>
     <footer v-if="!hideFooter" class="footer flex justify-between w-full">
-      <BackButton />
+      <BackButton v-if="!hideBackButton" />
+      <div v-if="hideBackButton"></div>
       <SingleButton type="button" :on-click="onNext" :disabled="isNextButtonDisabled"
         >Next Step</SingleButton
       >
