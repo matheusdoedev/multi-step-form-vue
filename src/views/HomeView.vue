@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   AddOnStep,
+  ConclusionStep,
   FormStepsSummary,
   PersonalInfoStep,
   SelectPlanStep,
@@ -18,6 +19,7 @@ import {
           <SelectPlanStep />
           <AddOnStep />
           <SummaryStep />
+          <ConclusionStep />
         </section>
       </section>
     </div>

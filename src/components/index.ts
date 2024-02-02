@@ -1,5 +1,6 @@
 export { default as AddOnStep } from './AddOnsStep.vue'
 export { default as BackButton } from './BackButton.vue'
+export { default as ConclusionStep } from './ConclusionStep.vue'
 export { default as FormStep } from './FormStep.vue'
 export { default as FormStepsSummary } from './FormStepsSummary.vue'
 export { default as PersonalInfoStep } from './PersonalInfoStep.vue'
