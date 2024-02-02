@@ -29,9 +29,9 @@ const {
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-2 mb-6">
+  <div class="flex flex-col gap-y-1 lg:gap-y-2 mb-4 lg:mb-6">
     <div class="flex items-center justify-between">
-      <label v-if="label" :for="name" class="label text-sm">{{ label }}</label>
+      <label v-if="label" :for="name" class="label text-xs lg:text-sm">{{ label }}</label>
       <span v-if="error" class="error-text font-bold text-xs">{{ error }}</span>
     </div>
     <input
@@ -39,7 +39,7 @@ const {
       :id="name"
       :name="name"
       :value="value"
-      class="input px-4 py-2.5 text-base font-medium rounded-lg"
+      class="input px-4 py-2.5 text-sm lg:text-base font-medium rounded-lg"
       :class="{ error: !!error }"
       @change="handleChange"
       :placeholder="placeholder"

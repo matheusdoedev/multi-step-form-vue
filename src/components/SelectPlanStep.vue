@@ -40,24 +40,26 @@ function handleNextStep() {
     :active="currentStep === 2"
     :on-next="handleNextStep"
   >
-    <ul class="flex items-center gap-4 w-full mb-8">
+    <ul class="flex flex-col lg:flex-row items-center gap-4 w-full mb-6 lg:mb-8">
       <li class="w-full" v-for="plan in planOptions" :key="plan.value">
         <button
-          class="plan-option flex flex-col rounded-lg py-5 px-4 text-left w-full"
+          class="plan-option flex gap-x-3.5 lg:flex-col rounded-lg p-4 lg:py-5 lg:px-4 text-left w-full"
           :class="{ selected: formData.plan === plan.value }"
           @click="() => changePlan(plan.value)"
         >
-          <img class="plan-option__image mb-10" :src="plan.icon" :alt="plan.label" />
-          <h3 class="plan-option__title font-medium text-base mb-2">{{ plan.label }}</h3>
-          <span v-if="isMonthly" class="plan-option__value text-sm"
-            >${{ plan.monthlyValue }}/mo</span
-          >
-          <span v-if="!isMonthly" class="plan-option__value text-sm"
-            >${{ plan.yearlyValue }}/yr</span
-          >
-          <span v-if="!isMonthly" class="plan-option__yearly-advantage mt-2 text-xs"
-            >2 months free</span
-          >
+          <img class="plan-option__image lg:mb-10" :src="plan.icon" :alt="plan.label" />
+          <div class="flex flex-col">
+            <h3 class="plan-option__title font-medium text-base mb-1 lg:mb-2">{{ plan.label }}</h3>
+            <span v-if="isMonthly" class="plan-option__value text-sm"
+              >${{ plan.monthlyValue }}/mo</span
+            >
+            <span v-if="!isMonthly" class="plan-option__value text-sm"
+              >${{ plan.yearlyValue }}/yr</span
+            >
+            <span v-if="!isMonthly" class="plan-option__yearly-advantage mt-1 lg:mt-2 text-xs"
+              >2 months free</span
+            >
+          </div>
         </button>
       </li>
     </ul>
